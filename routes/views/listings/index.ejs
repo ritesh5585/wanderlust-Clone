@@ -1,0 +1,83 @@
+<% layout('/layouts/boilerplate') %>
+
+<!-- ================= FILTER BAR ================= -->
+    <div id="filters">
+        <div class="filter">
+            <div class="text-center"><i class="fa-etch fa-solid fa-fire"></i></div>
+            <p>Trending</p>
+        </div>
+        <div class="filter">
+            <div class="text-center"><i class="fa-solid fa-bed"></i></div>
+            <p>Rooms</p>
+        </div>
+        <div class="filter">
+            <div class="text-center"><i class="fa-solid fa-mountain-city"></i></div>
+            <p>Iconic city</p>
+        </div>
+        <div class="filter">
+            <div class="text-center"><i class="fa-solid fa-mountain"></i></div>
+            <p>Mountain</p>
+        </div>
+        <div class="filter">
+            <div class="text-center"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                    width="24px" fill="#000000">
+                    <path
+                        d="M40-120v-480h80v80h80v-320h80v80h80v-80h80v80h80v-80h80v80h80v-80h80v320h80v-80h80v480H560v-120q0-33-23.5-56.5T480-320q-33 0-56.5 23.5T400-240v120H40Zm80-80h200v-40q0-66 47-113t113-47q66 0 113 47t47 113v40h200v-240H680v-240H280v240H120v240Zm240-280h80v-120h-80v120Zm160 0h80v-120h-80v120Zm-40 40Z" />
+                </svg></div>
+            <p>castle</p>
+        </div>
+        <div class="filter">
+            <div class="text-center"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960"
+                    width="24px" fill="#000000">
+                    <path
+                        d="M80-120v-80q38 0 57-20t75-20q56 0 77 20t57 20q36 0 57-20t77-20q56 0 77 20t57 20q36 0 57-20t77-20q56 0 75 20t57 20v80q-59 0-77.5-20T748-160q-36 0-57 20t-77 20q-56 0-77-20t-57-20q-36 0-57 20t-77 20q-56 0-77-20t-57-20q-36 0-54.5 20T80-120Zm0-180v-80q38 0 57-20t75-20q56 0 77.5 20t56.5 20q36 0 57-20t77-20q56 0 77 20t57 20q36 0 57-20t77-20q56 0 75 20t57 20v80q-59 0-77.5-20T748-340q-36 0-55.5 20T614-300q-57 0-77.5-20T480-340q-38 0-56.5 20T346-300q-59 0-78.5-20T212-340q-36 0-54.5 20T80-300Zm196-204 133-133-40-40q-33-33-70-48t-91-15v-100q75 0 124 16.5t96 63.5l256 256q-17 11-33 17.5t-37 6.5q-36 0-57-20t-77-20q-56 0-77 20t-57 20q-21 0-37-6.5T276-504Zm392-336q42 0 71 29.5t29 70.5q0 42-29 71t-71 29q-42 0-71-29t-29-71q0-41 29-70.5t71-29.5Z" />
+                </svg></div>
+            <p>Pools</p>
+        </div>
+        <div class="filter">
+            <div class="text-center"><i class="fa-solid fa-campground"></i></div>
+            <p>Camping</p>
+        </div>
+        <div class="filter">
+            <div class="text-center"><i class="fa-solid fa-tractor"></i></div>
+            <p>Tracktor</p>
+        </div>
+        <div class="tax-toggle">
+            <div class="form-check-reverse form-switch">
+                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                <label class="form-check-label text-center" for="flexSwitchCheckDefault">Display Total <br />After
+                    Tax</label>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= TITLE ================= -->
+
+    <h1 class="text-center m-4">𝓦𝓪𝓷𝓭𝓮𝓻𝓵𝓾𝓼𝓽 </h1>
+
+    <!-- ================= LISTINGS GRID ================= -->
+     
+    <div class="row g-3 row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
+
+        <% for(let listing of allListings) { %>
+            <div class="col">
+                <a href="/listings/<%= listing._id %>" class="listing-link">
+                    <div class="card h-100 p-2">
+                        <img src="<%= listing.image.url %>" class="card-img-top" style="height: 20rem"
+                            alt="listing_image">
+                        <div class="card-img-overlay"></div>
+                        <div class="card-body">
+                            <p class="card-text">
+                                <b>
+                                    <%= listing.title %>
+                                </b>
+                                <br>
+                                $ <%= listing.price.toLocaleString("en-IN") %> / night
+                                    <i class="tax-info"> +18% @GST</i>
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <% } %>
+    </div>
